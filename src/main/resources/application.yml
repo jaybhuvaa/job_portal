@@ -1,0 +1,16 @@
+
+
+server:
+  port: 9192
+
+spring:
+  datasource:
+    username: root
+    password: jay81
+    url: jdbc:mysql://localhost/job_portal
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      format_sql: true
