@@ -14,26 +14,26 @@ import java.util.List;
 @RequestMapping("/employee")
 @RequiredArgsConstructor
 public class EmployeeController {
-    private final IEmployeeService employeeService;
+    private final IEmployeeService employeeServices;
 
     @GetMapping
     public ResponseEntity<List<Employee>> getEmployees(){
-        return new ResponseEntity<>(employeeService.getEmployee(), HttpStatus.FOUND);
+        return new ResponseEntity<>(employeeServices.getEmployee(), HttpStatus.FOUND);
     }
     @PostMapping
     public Employee addEmployee(@RequestBody Employee employee){
-        return employeeService.addEmployee(employee);
+        return employeeServices.addEmployee(employee);
     }
     @PutMapping("/update/{id}")
     public Employee updateEmployee(@RequestBody Employee employee, @PathVariable Long id){
-        return employeeService.updateEmployee(employee, id);
+        return employeeServices.updateEmployee(employee, id);
     }
     @DeleteMapping("/delete/{id}")
     public void deleteEmployee(@PathVariable Long id){
-        employeeService.deleteEmployee(id);
+        employeeServices.deleteEmployee(id);
     }
     @GetMapping("/employee/{id}")
     public Employee getEmployeeById(@PathVariable Long id){
-        return employeeService.getEmployeeById(id);
+        return employeeServices.getEmployeeById(id);
     }
 }
