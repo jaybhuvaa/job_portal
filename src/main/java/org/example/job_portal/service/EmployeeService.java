@@ -52,7 +52,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Employee getEmployeeById(Long id) {
-        return employeeRepository.findById(id).orElseThrow(() -> new employeeNotFound("Sorry, this employee with rhis id could not found"));
+        return employeeRepository.findById(id).orElseThrow(() -> new employeeNotFound("Sorry, employee with "+id+" could not found"));
     }
 
     private boolean employeeAlreadyExists(String email) {

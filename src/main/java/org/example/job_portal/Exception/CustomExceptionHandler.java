@@ -26,9 +26,9 @@ public class CustomExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(employeeNotFound.class)
-    public Map<String, String> userNotFound(employeeNotFound ex){
+    public Map<String, String> userNotFound(employeeNotFound ex1){
         Map<String, String> error = new HashMap<>();
-        error.put("error", ex.getMessage());
+        error.put("error", ex1.getMessage());
         return error;
     }
 
