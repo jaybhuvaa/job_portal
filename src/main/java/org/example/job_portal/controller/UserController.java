@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/user")
 public class UserController {
 
@@ -18,6 +18,11 @@ public class UserController {
     public ResponseEntity addUser(@RequestBody User user){
         user = userService.addUser(user);
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity verifyUser(@RequestBody User user){
+        return  userService.verifyUser(user);
     }
 
     @DeleteMapping(value = "/delete")
