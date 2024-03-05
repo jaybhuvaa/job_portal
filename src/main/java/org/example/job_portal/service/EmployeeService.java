@@ -6,6 +6,7 @@ import org.example.job_portal.Exception.employeeNotFound;
 import org.example.job_portal.model.Employee;
 import org.example.job_portal.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class EmployeeService implements IEmployeeService {
     private final EmployeeRepository employeeRepository;
 
     @Override
+    @Transactional
     public Employee addEmployee(Employee employee) {
         if (employeeAlreadyExists(employee.getEmail())) {
             throw new EmployeeAlreadyExistsException(employee.getEmail() + " already exists!");

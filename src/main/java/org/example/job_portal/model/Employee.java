@@ -22,6 +22,6 @@ public class Employee {
     private String email;
     private String description;
     private String department;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 }
