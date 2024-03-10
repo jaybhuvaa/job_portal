@@ -4,7 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.example.job_portal.Exception.EmployeeAlreadyExistsException;
 import org.example.job_portal.Exception.employeeNotFound;
 import org.example.job_portal.model.Employee;
+import org.example.job_portal.model.User;
 import org.example.job_portal.repository.EmployeeRepository;
+import org.example.job_portal.repository.Userrepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,21 +17,25 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmployeeService implements IEmployeeService {
     private final EmployeeRepository employeeRepository;
+    @Autowired
+    Userrepository userrepository;
 
     @Override
     @Transactional
-    public Employee addEmployee(Employee employee) {
+    public Employee addEmployee(Employee employee, String userId) {
         if (employeeAlreadyExists(employee.getEmail())) {
             throw new EmployeeAlreadyExistsException(employee.getEmail() + " already exists!");
         }
+        employee.setUser(userrepository.findByEmail(userId));
+        System.out.println(userrepository.findByEmail(userId));
+
+
         return employeeRepository.save(employee);
     }
 
-    @Override
-    public List<Employee> getEmployee() {
-        return employeeRepository.findAll();
+    public List<Employee> getEmployeesByUser(String userId) {
+        return employeeRepository.findByUserId(userId);
     }
-
     @Override
     public Employee updateEmployee(Employee employee, Long id) {
 

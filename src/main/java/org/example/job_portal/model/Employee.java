@@ -22,6 +22,7 @@ public class Employee {
     private String email;
     private String description;
     private String department;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "User_email")
     private User user;
 }
