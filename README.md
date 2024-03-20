@@ -27,6 +27,4 @@ Backend:
 
 Spring Framework (Spring Boot, Spring MVC, Spring Data JPA)
 Java
-Database:
-
-[Database Name]: [Database Type] (e.g., MySQL, PostgreSQL, etc.)
+Database:MySql
