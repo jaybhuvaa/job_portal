@@ -1,4 +1,4 @@
-Employee Portal
+TeamTrack
 This is an Employee Portal application built using React.js for the frontend and Spring Framework for the backend. The application allows administrators to manage employees by adding, editing, and deleting them. Employees can view their own details and perform certain actions on their own profiles.
 
 Features
